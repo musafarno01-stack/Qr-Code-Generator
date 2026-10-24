@@ -17,7 +17,7 @@ jobs:
       - name: Export Godot 4 App
         uses: firebelley/godot-export@v6.0.0
         with:
-          # Remove broken hardcoded URLs and let the action handle downloads automatically, 
-          # or use the latest stable action defaults.
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           relative_project_path: ./
           archive_output: true
