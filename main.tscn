@@ -1,0 +1,157 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/main_ui.gd" id="1_mainui"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mainui")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ControlPanel" type="PanelContainer" parent="MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ControlPanel"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+layout_mode = 2
+text = "QR Code Generator Pro"
+theme_override_font_sizes/font_size = 22
+
+[node name="InputType" type="OptionButton" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextInput" type="TextEdit" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+placeholder_text = "Enter text or URL..."
+
+[node name="ErrorLabel" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SizeLbl" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+layout_mode = 2
+text = "Image Resolution:"
+
+[node name="HBoxSize" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+layout_mode = 2
+
+[node name="SizeSlider" type="HSlider" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxSize"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 256.0
+max_value = 2048.0
+step = 64.0
+value = 512.0
+
+[node name="SizeValueLbl" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxSize"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "512 px"
+
+[node name="BorderLbl" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+layout_mode = 2
+text = "Quiet Zone (Border):"
+
+[node name="HBoxBorder" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+layout_mode = 2
+
+[node name="BorderSlider" type="HSlider" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxBorder"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10.0
+value = 4.0
+
+[node name="BorderValLbl" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxBorder"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "4 modules"
+
+[node name="ECLabel" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+layout_mode = 2
+text = "Error Correction:"
+
+[node name="ECOption" type="OptionButton" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxColors" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+layout_mode = 2
+
+[node name="FG" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxColors"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxColors/FG"]
+layout_mode = 2
+text = "Foreground"
+
+[node name="FGPicker" type="ColorPickerButton" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxColors/FG"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BG" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxColors/BG"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxColors/BG"]
+layout_mode = 2
+text = "Background"
+
+[node name="BGPicker" type="ColorPickerButton" parent="MarginContainer/HSplitContainer/ControlPanel/VBox/HBoxColors/BG"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DownloadBtn" type="Button" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Download PNG"
+
+[node name="CopyBtn" type="Button" parent="MarginContainer/HSplitContainer/ControlPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Copy Payload Text"
+
+[node name="PreviewPanel" type="PanelContainer" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/HSplitContainer/PreviewPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Aspect" type="AspectRatioContainer" parent="MarginContainer/HSplitContainer/PreviewPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QRDisplay" type="TextureRect" parent="MarginContainer/HSplitContainer/PreviewPanel/VBox/Aspect"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
